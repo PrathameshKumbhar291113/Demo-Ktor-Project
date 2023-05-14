@@ -21,5 +21,9 @@ fun Application.configureRoutingModule() {
             println("Email: ${call.request.queryParameters["email"]}")
         }
 
+        get("/iphone/{page}"){
+            val pageNum = call.parameters["page"]
+            call.respondText("You are on page number : $pageNum")
+        }
     }
 }
