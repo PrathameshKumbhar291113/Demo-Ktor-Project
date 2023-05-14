@@ -1,6 +1,8 @@
 package com.pratham
 
-import com.pratham.plugins.configureRouting
+import com.pratham.plugins.aboutUsModule
+import com.pratham.plugins.configureRoutingModule
+import com.pratham.plugins.featuresModule
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -9,19 +11,18 @@ import io.ktor.server.routing.*
 
 fun main() {
     embeddedServer(Netty, port = 8080, host = "0.0.0.0"){
-        install(Routing){
-            homeRoute()
-        }
-        configureRouting()
+        configureRoutingModule()
+        aboutUsModule()
+        featuresModule()
     }.start(wait = true)
 }
 
 fun Application.module() {
-    configureRouting()
+    configureRoutingModule()
 }
 
 fun Routing.homeRoute(){
     get("/"){
-        call.respond("Hello My Demo Project ..............")
+        call.respond("Hello My Demo Project 7.")
     }
 }
